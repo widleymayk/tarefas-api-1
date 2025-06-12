@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "tarefas": [
     {
       "id": 12121212099,
@@ -19,4 +20,15 @@
       "dataCriacao": "2025-06-10T23:00:13.640Z"
     }
   ]
+=======
+    "tarefas": [
+        {
+            "id": 12121212099,
+            "tarefa": "Separar material de pesca",
+            "descricao": "Vamos realizar uma pescaria",
+            "dataCriacao": "2025-06-06T23:23:31.539Z"
+
+        }
+    ]
+>>>>>>> 282a95e689f1a41f9c58fe8b5e240ec5d3c19d23
 }

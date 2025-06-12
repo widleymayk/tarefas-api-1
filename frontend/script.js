@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('tarefaForm');
     const tarefasList = document.getElementById('tarefasList');
+<<<<<<< HEAD
     const API_URL = 'http://localhost:3000/tarefas';
 
     carregarTarefas();
@@ -55,6 +56,59 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+=======
+
+    carregarTarefas();
+
+    // Adicionar um evento de submit ao formulário
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const tarefa = document.getElementById('tarefa').value;
+        const descricao = document.getElementById('descricao').value;
+
+        adicionarTarefa({ tarefa, descricao });
+
+        form.reset();
+    });
+
+    // Função para adicionar uma tarefa
+    async function adicionarTarefa({ tarefa, descricao }) {
+        try {
+            const response = await fetch('http://localhost:3000/tarefas', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ tarefa, descricao })
+            });
+
+            if (!response.ok) {
+                throw new Error('Erro ao adicionar tarefa');
+            }
+
+            carregarTarefas();
+
+        } catch (error) {
+            console.error('Erro ao adicionar tarefa:', error);
+        }
+    }
+
+    // Função para carregar as tarefas
+    async function carregarTarefas() {
+        try {
+            const response = await fetch('http://localhost:3000/tarefas');
+            const tarefas = await response.json();
+
+            exibirTarefas(tarefas);
+
+        } catch (error) {
+            console.error('Erro ao carregar tarefas:', error);
+        }
+    }
+
+    // Função para exibir as tarefas
+>>>>>>> 282a95e689f1a41f9c58fe8b5e240ec5d3c19d23
     function exibirTarefas(tarefas) {
         tarefasList.innerHTML = '';
 
@@ -63,14 +117,18 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+<<<<<<< HEAD
         const fragment = document.createDocumentFragment();
 
+=======
+>>>>>>> 282a95e689f1a41f9c58fe8b5e240ec5d3c19d23
         tarefas.forEach(tarefa => {
             const div = document.createElement('div');
             div.className = 'tarefa-item';
             div.innerHTML = `
                 <h3>${tarefa.tarefa}</h3>
                 <p>${tarefa.descricao}</p>
+<<<<<<< HEAD
                 <small>Data de criação: ${formatarData(tarefa.dataCriacao)}</small>
                 <hr>
             `;
@@ -91,3 +149,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return new Date(dataString).toLocaleDateString('pt-BR', options);
     }
 });
+=======
+                <small>Data de criação: ${new Date(tarefa.dataCriacao).toLocaleDateString()}</small>
+            `;
+            tarefasList.appendChild(div);
+        });
+    }
+});
+>>>>>>> 282a95e689f1a41f9c58fe8b5e240ec5d3c19d23
