@@ -6,42 +6,130 @@ body {
     background: #FFFFFF;
 }
 
-.container{
+.container {
     max-width: 800px;
     margin: 0 auto;
     background: #87cefa;
     padding: 20px;
     border-radius: 8px;
 }
-.form-group{
+
+.form-group {
     margin-bottom: 15px;
 }
-label{
+
+label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
+
 input[type="text"],
-textarea{
+textarea {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
 }
-textarea{
+
+textarea {
     height: 100px;
     resize: vertical;
 }
-button{
-    background: #5cb85c;
+
+button {
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
+    transition: background-color 0.3s;
 }
-button:hover{
+
+button[type="submit"] {
+    background: #5cb85c;
+}
+
+button[type="submit"]:hover {
     background: #4cb84c;
+}
+
+.tarefa-item {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tarefa-item h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.tarefa-item p {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.tarefa-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.tarefa-data {
+    color: #999;
+    font-size: 12px;
+}
+
+.tarefa-acoes {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-editar {
+    background: #f0ad4e;
+}
+
+.btn-editar:hover {
+    background: #ec971f;
+}
+
+.btn-deletar {
+    background: #d9534f;
+}
+
+.btn-deletar:hover {
+    background: #c9302c;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin-top: 15px;
+}
+
+/* Adicione ao seu CSS existente */
+
+#cancelarBtn {
+    background: #6c757d;
+    margin-left: 10px;
+}
+
+#cancelarBtn:hover {
+    background: #5a6268;
+}
+
+.tarefa-item {
+    position: relative;
+}
+
+.tarefa-acoes button {
+    padding: 5px 10px;
+    font-size: 13px;
 }

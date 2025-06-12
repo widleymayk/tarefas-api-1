@@ -51,3 +51,49 @@ app.post('/tarefas', (req, res) => {
 app.listen(PORT, () => {
     console.log('Servidor rodando na porta 3000');
 });
+
+// Adicionar estas rotas após as rotas existentes
+
+// Rota para deletar uma tarefa
+app.delete('/tarefas/:id', (req, res) => {
+    const { id } = req.params;
+    const data = JSON.parse(fs.readFileSync(DB_FILE));
+    
+    const index = data.tarefas.findIndex(t => t.id == id);
+    
+    if (index === -1) {
+        return res.status(404).json({ message: 'Tarefa não encontrada' });
+    }
+    
+    data.tarefas.splice(index, 1);
+    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));
+    
+    res.json({ message: 'Tarefa removida com sucesso' });
+});
+
+// Rota para atualizar uma tarefa
+app.put('/tarefas/:id', (req, res) => {
+    const { id } = req.params;
+    const { tarefa, descricao } = req.body;
+    
+    if (!tarefa || !descricao) {
+        return res.status(400).json({ message: 'Tarefa e descrição são obrigatórios' });
+    }
+    
+    const data = JSON.parse(fs.readFileSync(DB_FILE));
+    const index = data.tarefas.findIndex(t => t.id == id);
+    
+    if (index === -1) {
+        return res.status(404).json({ message: 'Tarefa não encontrada' });
+    }
+    
+    data.tarefas[index] = {
+        ...data.tarefas[index],
+        tarefa,
+        descricao
+    };
+    
+    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));
+    
+    res.json(data.tarefas[index]);
+});

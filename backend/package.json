@@ -9,6 +9,8 @@
   "license": "MIT",
   "repository": "jshttp/accepts",
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "mime-types": "^3.0.0",
     "negotiator": "^1.0.0"
   },
